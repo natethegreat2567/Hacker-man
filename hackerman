@@ -1,0 +1,40 @@
+local plr = Game.Players.PLAYERNAME
+plr.Character.Humanoid.MaxHealth = 5000
+plr.Character.Humanoid.Health = 5000 
+
+plr.Character.Humanoid.WalkSpeed = 35
+plr.Character.Humanoid.JumpPower = 200
+
+local aoura = Instance.new("Part")
+aoura.Parent = game.Workspace
+aoura.CFrame = plr.Character.HumanoidRootPart.CFrame
+aoura.Size = Vector3.new(17.846, 13.544, 15.253)
+local mw = Instance.new("ManualWeld")
+mw.Part0 = aoura
+mw.Part1 = plr.Character.HumanoidRootPart
+mw.Parent = mw.Part0
+aoura.CanCollide = false
+aoura.Massless = true
+aoura.Transparency = 1
+
+local cs = game:GetService("Chat")
+
+aoura.Touched:Connect(function(hit)
+if hit and hit.Parent and hit.Parent:FindFirstChild("Humanoid") then
+hit.Parent.Humanoid.Health = 0
+local cs = game:GetService("Chat")
+cs:Chat(plr.Character.Head, "ez gg no re", Enum.ChatColor.White)
+end
+end)
+
+
+
+while wait(math.random(2,10)) do
+plr.Character.HumanoidRootPart.Anchored = true
+wait(0.3)
+plr.Character.HumanoidRootPart.Anchored = false
+wait(0.1)
+end
+
+
+
